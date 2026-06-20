@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Ludo Championship</title>
+    <!-- Modern Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Dynamic Animated Background -->
+    <div class="background-animation"></div>
+    
+    <div class="game-container">
+        <header class="game-header">
+            <h1 class="glow-text">Ludo <span class="accent">Championship</span></h1>
+        </header>
+
+        <main class="game-layout">
+            <section class="board-section">
+                <!-- The grid and elements are populated by JS -->
+                <div id="board" class="ludo-board"></div>
+            </section>
+
+            <aside class="control-panel">
+                <div class="glass-panel player-turn-card">
+                    <h3><i class="fa-solid fa-rotate-right"></i> Current Turn</h3>
+                    <div class="current-player" id="turn-indicator">
+                        <span class="player-badge red-bg">Red Player</span>
+                    </div>
+                </div>
+
+                <div class="glass-panel dice-card">
+                    <h3><i class="fa-solid fa-dice"></i> Dice</h3>
+                    <div id="dice-display" class="dice">
+                        <i class="fa-solid fa-dice-one"></i>
+                    </div>
+                    <button id="rollDiceBtn" class="btn-primary">
+                        <span>Roll Dice</span>
+                        <div class="btn-glow"></div>
+                    </button>
+                </div>
+
+                <div class="glass-panel player-stats">
+                    <h3><i class="fa-solid fa-users"></i> Players</h3>
+                    <div class="player-info red">
+                        <div class="player-name">Red</div>
+                        <div class="score"><span>0</span> / 4</div>
+                    </div>
+                    <div class="player-info green">
+                        <div class="player-name">Green</div>
+                        <div class="score"><span>0</span> / 4</div>
+                    </div>
+                    <div class="player-info yellow">
+                        <div class="player-name">Yellow</div>
+                        <div class="score"><span>0</span> / 4</div>
+                    </div>
+                    <div class="player-info blue">
+                        <div class="player-name">Blue</div>
+                        <div class="score"><span>0</span> / 4</div>
+                    </div>
+                </div>
+            </aside>
+        </main>
+    </div>
+    
+    <script src="js/game.js"></script>
+</body>
+</html>
