@@ -14,6 +14,9 @@
     --glass-border: rgba(255, 255, 255, 0.1);
     --text-primary: #f8fafc;
     --text-secondary: #cbd5e1;
+    --board-size: min(600px, 95vmin);
+    --board-padding: calc(var(--board-size) * 0.025);
+    --token-size: calc((var(--board-size) - (var(--board-padding) * 2)) / 15 * 0.7);
 }
 
 * {
@@ -68,7 +71,7 @@ body {
 }
 
 .game-header h1 {
-    font-size: 3rem;
+    font-size: clamp(1.8rem, 5vw, 3rem);
     font-weight: 800;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -97,16 +100,16 @@ body {
 }
 
 .ludo-board {
-    width: 600px;
-    height: 600px;
+    width: var(--board-size);
+    height: var(--board-size);
     background: var(--board-bg);
-    border-radius: 20px;
+    border-radius: min(20px, 4vmin);
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5),
                 0 0 0 10px rgba(255, 255, 255, 0.1);
     display: grid;
     grid-template-columns: repeat(15, 1fr);
     grid-template-rows: repeat(15, 1fr);
-    padding: 15px;
+    padding: var(--board-padding);
     gap: 2px;
     position: relative;
     overflow: hidden;
@@ -125,20 +128,20 @@ body {
 /* Bases */
 .base {
     position: absolute;
-    width: calc(40% - 15px);
-    height: calc(40% - 15px);
+    width: calc(40% - var(--board-padding));
+    height: calc(40% - var(--board-padding));
     border-radius: 16px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: var(--board-padding);
     box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
 }
 
-.base.red { top: 15px; left: 15px; background: var(--red); }
-.base.green { top: 15px; right: 15px; background: var(--green); }
-.base.yellow { bottom: 15px; right: 15px; background: var(--yellow); }
-.base.blue { bottom: 15px; left: 15px; background: var(--blue); }
+.base.red { top: var(--board-padding); left: var(--board-padding); background: var(--red); }
+.base.green { top: var(--board-padding); right: var(--board-padding); background: var(--green); }
+.base.yellow { bottom: var(--board-padding); right: var(--board-padding); background: var(--yellow); }
+.base.blue { bottom: var(--board-padding); left: var(--board-padding); background: var(--blue); }
 
 .base-inner {
     width: 100%;
@@ -170,10 +173,10 @@ body {
     width: 20%;
     height: 20%;
     background: transparent;
-    border-top: calc(600px * 0.1 - 3px) solid var(--green);
-    border-right: calc(600px * 0.1 - 3px) solid var(--yellow);
-    border-bottom: calc(600px * 0.1 - 3px) solid var(--blue);
-    border-left: calc(600px * 0.1 - 3px) solid var(--red);
+    border-top: calc(var(--board-size) * 0.1 - 3px) solid var(--green);
+    border-right: calc(var(--board-size) * 0.1 - 3px) solid var(--yellow);
+    border-bottom: calc(var(--board-size) * 0.1 - 3px) solid var(--blue);
+    border-left: calc(var(--board-size) * 0.1 - 3px) solid var(--red);
 }
 
 /* Safe Zones & Paths */
@@ -189,8 +192,8 @@ body {
 
 /* Tokens */
 .token {
-    width: 28px;
-    height: 28px;
+    width: var(--token-size);
+    height: var(--token-size);
     border-radius: 50%;
     border: 3px solid white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3), inset 0 -3px 4px rgba(0,0,0,0.2);
@@ -363,7 +366,7 @@ body {
         align-items: center;
     }
     .control-panel {
-        width: 600px;
+        width: var(--board-size);
         flex-direction: row;
         flex-wrap: wrap;
     }
@@ -374,16 +377,17 @@ body {
 }
 
 @media(max-width: 700px) {
-    .ludo-board {
-        width: 95vw;
-        height: 95vw;
-        border-width: 0;
-    }
-    .home-center {
-        border-width: calc(95vw * 0.1 - 3px);
-    }
     .control-panel {
+        flex-direction: column;
         width: 100%;
+    }
+    .base {
+        border-radius: 8px;
+    }
+    .base-inner {
+        border-radius: 6px;
+        gap: 5px;
+        padding: 8px;
     }
 }
 
